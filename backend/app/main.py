@@ -10,21 +10,25 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from datetime import datetime
 import pandas as pd
+import sys
+sys.path.append('app')
+
+from mymodules.df_integrations import flights
+from mymodules.Cleaning import flights_data_cleaned
+from mymodules.Avg_Class_Price import calculate_average_price_airline
+
+app = FastAPI()
 
 
-#app = FastAPI()
+@app.get('/')
+def read_root():
+    """
+    Root endpoint for the backend.
 
-
-#@app.get('/')
-#def read_root():
-#    """
-#    Root endpoint for the backend.
-
-#    Returns:
-#        dict: A simple greeting.
-#    """
-#    return {"Hello": "World"}
-
+    Returns:
+        dict: A simple greeting.
+    """
+    return {"Hello": "World"}
 
 #@app.get('/query/{person_name}')
 #def read_item(person_name: str):
@@ -67,6 +71,14 @@ import pandas as pd
 #    return JSONResponse(content={"date": current_date})
 
 
+@app.get('/get_airline')
+def airlines():
+    tt = flights_data_cleaned['Air Carrier'].drop_duplicates().to_json(orient='records')
+    return tt
 
-from mymodules.df_integrations import flights
+@app.get('/{AIRLINES}')
+def average_web(AIRLINES):
+    result = calculate_average_price_airline(flights, AIRLINES)
+    return result
+
 

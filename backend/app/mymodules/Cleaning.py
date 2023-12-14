@@ -21,5 +21,6 @@ flights_data_cleaned.rename(columns={' Total Cost ex VAT ':'Price in £'}, inpla
 flights_data_cleaned.rename(columns={'Journey Start Point':'Departure'}, inplace=True)
 flights_data_cleaned.rename(columns={'Journey Finish Point':'Arrival'}, inplace=True)
 
-
-
+flights_data_cleaned['Price in £'] = flights_data_cleaned['Price in £'].str[3:]
+flights_data_cleaned['Price in £'] = flights_data_cleaned['Price in £'].replace(',', '.', regex=True).replace('.', '', regex=True).astype(float)
+print(flights_data_cleaned['Price in £'].values)

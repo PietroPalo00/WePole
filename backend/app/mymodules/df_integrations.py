@@ -1,3 +1,6 @@
+import sys
+sys.path.append('mymodules')
+
 import pandas as pd
 from Cleaning import flights_data_cleaned
 import datetime
@@ -6,7 +9,6 @@ import random
 df = flights_data_cleaned
 
 #changing travel date string into datetime format
-
 df['Travel Date'] = pd.to_datetime(df['Travel Date'], format = '%d/%m/%Y')
 
 #iterating over dataframe
@@ -16,7 +18,6 @@ mask = df['Ticket Single or Return'] == 'Return'
 
 #slash price by half where mask value = TRUE
 df.loc[mask, 'Price in £'] = df.loc[mask, 'Price in £'] / 2
-
 # creating new row for return ticket 
 new_row = df[mask].copy()
 add_rows = df[mask].copy()
@@ -40,5 +41,5 @@ df.reset_index(drop=True, inplace=True)
 #our final dataset to use for the project 
 flights = df
 
-
+print (flights['Price in £'].dtype)
 
