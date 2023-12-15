@@ -1,5 +1,49 @@
-# swdevel-lab-hfarm
- Skeleton Project for the Lab of Software Project Development
+# WePole README file 
+
+WePole software project for the Lab Of Software Project Development exam. 
+
+
+# What does WePole Software? 
+
+Our Software presents some features typical of flights serach engines on the web. The dataset that we used stores data 
+from past flights, especially centered around the UK. 
+
+We used details about Departure and Arrival airports, Airline Companies, Dates, Price and Class. 
+
+From the web interface you can navigate through some features, like calculating average price for a specific conenction, 
+get a random destination from a departure place, getting information about the airline company. 
+
+
+
+# BACKEND 
+
+The backend/mymodues are stored all the modules that we created for developing the features of the app. 
+Each feature has a specific module that is connected with the main.py file. 
+
+- Avg_Class_Price.py is the feature that calulates the average price for a specific airline 
+- Feature_1_avg_price.py computes the average price for a selected connection between flights.
+- Destination_random.py stores the function that fives back a random destination and possible dates
+  based on the Departure input.
+- ....
+
+
+Tests were tried in the test_main.py stored in the tests folder.
+
+
+# FROTEND 
+
+
+
+.....
+
+
+
+ What the project do, what is its goal.
+• Names and format of the data files (if present or needed in your repository).
+• How to populate the database (if present). If your software includes a helper module,
+document how the user (myself) is supposed to run it.
+• If for some reason you realized some additional code (to be put in the scripts/ folder)
+and you want me to look at it in the README.
 
 # Flask and FastAPI Dockerized Project
 
