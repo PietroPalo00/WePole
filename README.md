@@ -13,6 +13,20 @@ We used details about Departure and Arrival airports, Airline Companies, Dates, 
 From the web interface you can navigate through some features, like calculating average price for a specific conenction, 
 get a random destination from a departure place, getting information about the airline company. 
 
+# Use of web application 
+
+Our web application uses FastApi as the backend and Flask in the frontend. All the development
+was carried out using Docker containers. 
+
+The graphics and layout of the webpage was modified through the Html files in the frontend of the application. 
+
+
+**Run the application** 
+
+Run and debug first backend and then frontend, port localhost:8080 shoul be opened on a browser. 
+
+In the top bar of the homepage are shown the features that have been developed. 
+
 
 
 # BACKEND 
@@ -32,11 +46,17 @@ Tests were tried in the test_main.py stored in the tests folder.
 
 # FROTEND 
 
+In the frontend part of the project the main.py file is connected with the backend part. 
+We used Queryform for all the inputs that are necessary to activate the features in the backend part. 
+
+Html forms were modified to improve the graphics and layout of the webpage. 
+'templates' folder stores all the html files and 'static' the images that we added. 
+
 
 
 .....
 
-
+------ ----- cose da mettere ---- ----
 
  What the project do, what is its goal.
 • Names and format of the data files (if present or needed in your repository).
@@ -44,6 +64,11 @@ Tests were tried in the test_main.py stored in the tests folder.
 document how the user (myself) is supposed to run it.
 • If for some reason you realized some additional code (to be put in the scripts/ folder)
 and you want me to look at it in the README.
+
+
+----  ----- ------ ---- ------
+
+parte originale ---
 
 # Flask and FastAPI Dockerized Project
 
