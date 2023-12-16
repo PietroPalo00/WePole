@@ -4,7 +4,7 @@ Frontend module for the Flask application.
 This module defines a simple Flask application that serves as the frontend for the project.
 """
 
-from flask import Flask, render_template, Request, redirect, url_for, request
+from flask import Flask, render_template, Request, redirect, url_for, request, jsonify
 app = Flask(__name__)
 
 # ... [Altra configurazione necessaria, se presente] ...
@@ -28,7 +28,7 @@ class QueryForm(FlaskForm):
     submit1 = SubmitField('Where can i go?')
     airline = SelectField('Airlines:')
     submit2 = SubmitField('Get airlines')
-    
+
 @app.route('/')
 def index():
     return render_template('index.html')
