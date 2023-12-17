@@ -1,19 +1,35 @@
-import pandas as pd
-import sys
-sys.path.append('app/mymodules')
-from df_integrations import flights
+
+
+'''
+Feature 4 - Cheapest company to fly
+
+This module offers a tool to find the cheapest company
+to fly to a specified airport
+'''
 
 
 def cheapest_to_fly(data, arrival):
+    """
+    Find the cheapest air carrier for a given arrival location.
 
-    arrival_flights = data[(data['Arrival'] == arrival)]
+    Parameters:
+    - data (DataFrame): The DataFrame containing flight data
+    with columns 'Arrival', 'Air Carrier', and 'Price in £'.
+    - arrival (str): The arrival location
+    for which to find the cheapest air carrier.
 
-    df_media_prezzi = arrival_flights.groupby("Air Carrier")["Price in £"].mean().round(2).reset_index()
+    Returns:
+    - dict: A dictionary containing information about the cheapest air carrier,
+    including 'Air Carrier' and 'Price in £'.
+    If no data is available for the specified arrival or air carrier,
+    returns an informative message.
+    """
+    arrivals = data[(data['Arrival'] == arrival)]
 
-    df_media_prezzi.sort_values(by="Price in £",inplace=True)
+    avg_price = arrivals.groupby("Air Carrier")["Price in £"].mean().round(2)
+    avg_price = avg_price.reset_index()
+    avg_price.sort_values(by="Price in £", inplace=True)
 
-    cheapest=df_media_prezzi.iloc[0]
+    cheapest = avg_price.iloc[0]
 
     return cheapest
-
-
