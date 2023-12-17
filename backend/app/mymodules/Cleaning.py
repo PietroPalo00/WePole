@@ -1,3 +1,18 @@
+
+"""
+
+Read a flights dataset from a CSV file and perform data cleaning operations.
+
+Parameters:
+- file_path (str): The path to the CSV file containing flights data.
+
+Returns:
+- DataFrame: A cleaned DataFrame with irrelevant columns removed, currency 
+symbols removed
+from the 'Total Cost ex VAT' column, and columns renamed for clarity.
+
+"""
+
 import pandas as pd
 
 
@@ -8,14 +23,21 @@ df_clean = flights_data.drop(columns=["Number of Travellers", "Customer"])
 
 
 def clean_cost(value):
+    """
 
+    Apply to column with '£' values.
+
+    Replace '£' values with spaces for future modelling of value
+    Returning float
+
+    """
     if isinstance(value, str) and '£' in value:
         return float(value.replace('£', '').replace(',', '').strip())
     else:
         return value
 
 
-df_clean['Price in £'] = df_clean[' Total Cost ex VAT '].apply(clean_cost)
+df_clean[' Total Cost ex VAT '] = df_clean[' Total Cost ex VAT '].apply(clean_cost)
 
 # Renaming the columns for clarity
 df_clean.rename(columns={' Total Cost ex VAT ': 'Price in £'}, inplace=True)
