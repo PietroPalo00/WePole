@@ -7,13 +7,13 @@ from fastapi.responses import JSONResponse
 import pandas as pd
 import sys
 sys.path.append('app')
-from mymodules.cleaning import df_clean
+from mymodules.Cleaning import df_clean
 from mymodules.df_integrations import flights
 from mymodules.feat_1_avg_price import calculate_average_price
 from mymodules.feat_3_class_price import calculate_average_price_airline
 from mymodules.feat_2_random import randomize_destination
 from mymodules.feat_4_cheapest import cheapest_to_fly
-from mymodules.cleaning import clean_cost
+from mymodules.Cleaning import clean_cost
 
 app = FastAPI()
 

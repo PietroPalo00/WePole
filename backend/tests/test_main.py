@@ -8,7 +8,7 @@ from app.main import app
 from app.mymodules.feat_2_random import randomize_destination
 from app.mymodules.feat_3_class_price import calculate_average_price_airline
 from app.mymodules.df_integrations import flights
-from app.mymodules.cleaning import clean_cost
+from app.mymodules.Cleaning import clean_cost
 
 # Add the project root to the sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))

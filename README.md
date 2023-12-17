@@ -1,191 +1,143 @@
-# swdevel-lab-hfarm
- Skeleton Project for the Lab of Software Project Development
+# WePole README file 
 
-# Flask and FastAPI Dockerized Project
+WePole software project for the Lab Of Software Project Development exam. 
 
-This project demonstrates a simple web application using Flask as the frontend and FastAPI as the backend. The frontend allows querying birthdays from the backend using a form. The project is Dockerized for easy deployment.
+# What does WePole Software do? 
 
-## Architecture
+Our Software presents some features typical of flights serach engines on the web. The dataset that we used stores data 
+from past flights, especially centered around the UK and departing from London Airports. 
 
-The project follows a simple client-server architecture:
+From this dataset we used details about Departure and Arrival airports, Airline Companies, Dates, Price and Classes. 
 
-1. **Frontend (Flask):**
-   - Represents the user interface or client side.
-   - Built with Flask, a lightweight web framework for Python.
-   - Responsible for rendering web pages and user interaction, including the form for querying the backend.
+From the web interface you can navigate through some features, like calculating average price for a specific connection, 
+get a random destination from a departure place, and getting information about the airline company. 
 
-2. **Backend (FastAPI):**
-   - Represents the server or backend of the application.
-   - Built with FastAPI, a modern web framework for building APIs with Python.
-   - Handles requests from the frontend, including querying birthdays and providing the current date.
+# Development of the application 
 
-3. **Docker Compose:**
-   - Orchestrates the deployment of both frontend and backend as separate containers.
-   - Ensures seamless communication between frontend and backend containers.
-   - Simplifies the deployment and management of the entire application.
+Our web application uses FastApi as the backend and Flask in the frontend. All the development
+was carried out using Docker containers. 
 
-### Communication
-Bidirectional communication is established between the Frontend (Flask) and Backend (FastAPI). Docker Compose facilitates this communication, allowing the components to work together seamlessly.
+The graphics and layout of the webpage was modified through the html files in the frontend of the application. 
+We integrated some images regarding the cities on the dataset. A folder names 'static' contains files of the images 
+that appear on the website. Then we implemented some css features to design the graphic of the website in order 
+for it to be similar to a true flight search engine website. 
 
-## Project Structure
 
-- `backend/`: FastAPI backend implementation.
-    - Dockerfile: Dockerfile for building the backend image.
-    - main.py: Main backend application file.
-    - requirements.txt: List of Python dependencies for the backend.
-- `frontend/`: Flask frontend implementation.
-    - Dockerfile: Dockerfile for building the frontend image.
-    - static/: Folder for static files (CSS, JavaScript, etc.).
-    - templates/: Folder for HTML templates.
-    - main.py: Main frontend application file.
-    - requirements.txt: List of Python dependencies for the frontend.
-- `docker-compose.yml`: Docker Compose configuration for running both frontend and backend.
+*Run the application* 
 
-## Prerequisites
+Our dataset is called 'flights.csv' and is stored in the backend part. It must be present in order for 
+the software to work. 
 
-- Docker
-- Visual Studio Code (Optional, for debugging)
+Once master branch is opened, run and debug first backend and then frontend in Docker containers. 
 
-## Usage
+Port localhost:8080 should then be opened on a browser. 
 
-1. Clone the repository and navigate in the directory:
+If the application doesn't run on first try, check backend status. If the backend 
+shows a problem in the formatting of the csv file, specifically while trying to work on the column that 
+present the '£' symbol, try to load the csv again from github again, as it occured to us that it may corrupt. 
 
-    ```bash
-    git clone REPO_URL
-    cd swdevel-lab-hfarm
-    ```
+In the top bar of the homepage are shown the features that have been developed.
 
-2. Build and run the Docker containers:
+For the feature 'Average Price for Connection' we suggest to select one of Departure Airport 
+between the London ones, as the dataset mainly includes flights departing from London. 
+Otherwise other connections might not be available. 
 
-    ```bash
-    docker-compose up --build
-    ```
+# BACKEND 
 
-    This will start both the frontend and backend containers.
-    
-> **NOTE:** Uncomment the lines in the Dockerfiles that follow the section labeled `Command to run the application` and comment out the ones labeled `Command to keep the container running`. This will allow you to access the backend and frontend, as described in Point 3.
+In the backend/mymodues folder are stored all the modules that we created for developing the features of the app. 
+Each feature has a specific module that is connected with the main.py file. 
 
-3. Open your web browser and navigate to [http://localhost:8080](http://localhost:8080) to access the `frontend` and [http://localhost:8081](http://localhost:8081) to access the `backend`.
+main.py
+Purpose: Frontend module for the Flask application.
+Functionality: Manages web requests, template rendering, and integrates other modules.
 
-4. Use the form on the frontend to query birthdays from the backend.
+cleaning.py
+Purpose: Data cleaning for flight datasets.
+Functionality: Reads and cleans data, focusing on formatting and removing irrelevant information.
 
-## Shutting Down the Docker Containers
+df_integrations.py
+Purpose: Dataset creation and refinement.
+Functionality: Enhances data by creating return tickets, sorting, and deduplication.
 
-To shut down the running Docker containers, you can use the following steps:
+feat_1_avg_price.py
+Purpose: Average flight price calculation.
+Functionality: Computes average flight prices for specific routes.
 
-1. Open a terminal.
+feat_2_random.py
+Purpose: "Surprise me" destination feature.
+Functionality: Suggests random travel destinations based on user input.
 
-2. Navigate to the project root directory.
+feat_3_class_price.py
+Purpose: Average price calculation for flight classes.
+Functionality: Analyzes and calculates average prices for different flight classes.
 
-3. Run the following command to stop and remove the Docker containers:
+feat_4_cheapest.py
+Purpose: Cheapest flight finder.
+Functionality: Identifies the most affordable flights to a given destination.
 
-    ```bash
-    docker-compose down
-    ```
+Tests were tried in the test_main.py stored in the tests folders and coverage is 100%. 
 
-## Starting and Stopping Containers Individually
 
-If you need to start or stop the containers individually, you can use the following commands:
+# FRONTEND 
 
-- **Start Frontend Container:**
+In the frontend part of the project the main.py file is connected with the backend part. 
+We used Queryform for all the inputs that are necessary to activate the features in the backend part. 
 
-    ```bash
-    docker-compose up frontend
-    ```
+The graphics and layout of the webpage was modified through the html files in the frontend of the application. 
+We integrated some images regarding the cities on the dataset. A folder names 'static' contains files of the images 
+that appear on the website. Then we implemented some css features to design the graphic of the website in order 
+for it to be similar to a true flight search engine website. 
 
-- **Stop Frontend Container:**
+The 'main.py' file is the central module of a Flask-based web application. 
+It is responsible for initializing and configuring the Flask server, defining routes, and managing web interactions.
 
-    ```bash
-    docker-compose stop frontend
-    ```
+*HTML File Descriptions*
 
-- **Start Backend Container:**
+airlines.html
+Purpose: Part of the "Destination Randomizer" feature.
+Details: Extends base.html with custom styles and layout.
 
-    ```bash
-    docker-compose up backend
-    ```
+base.html
+Purpose: Base template for the application.
+Details: Includes Bootstrap CSS, meta tags, and standard HTML elements.
 
-- **Stop Backend Container:**
+cheap_result.html
+Purpose: Displaying results for cheap flight options.
+Details: Extends base.html with a focus on results presentation.
 
-    ```bash
-    docker-compose stop backend
-    ```
+cheapest.html
+Purpose: Showcasing cheapest flight options.
+Details: Similar to airlines.html, focuses on budget-friendly destinations.
 
-Make sure to replace `frontend` and `backend` with the appropriate service names from your `docker-compose.yml` file.
+flights1.html
+Purpose: Displaying airline price information.
+Details: Extends base.html with airline pricing focus.
 
-### Notes:
+index.html
+Purpose: Homepage of the web application.
+Details: Main landing page with custom styles and layout.
 
-When stopping containers individually, the `docker-compose down` command is not required.
-Now you can manage the lifecycle of your Docker containers more flexibly.
+my_form.html
+Purpose: User input form.
+Details: Contains a custom form for data submission or queries.
 
+randomize.html
+Purpose: Part of the "Destination Randomizer" feature.
+Details: Focuses on displaying random flight destinations.
 
-## Debugging with Visual Studio Code and Docker Extension
+result_avg.html, results_air-html and result.html
+Purpose: Displaying various results.
+Details: Generic results pages, possibly for average prices and other data outputs.
 
-1. Open the project in Visual Studio Code:
+# Docstrings 
 
-    ```bash
-    code .
-    ```
+Docstring documentation in htlm of the modules of the features are created outside the app folder. 
 
-2. Set breakpoints in your Python code as needed.
+# END
 
-3. Build and run the Docker containers:
+WePole software developed by: 
 
-    ```bash
-    docker-compose up --build
-    ```
-
-    Ensure that your Docker containers are running.
-
-4a. Install the [Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) for Visual Studio Code.
-4b. Install the [Remote Development Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) for Visual Studio Code
-
-5. Open the "Docker" view in Visual Studio Code by clicking on the Docker icon in the Activity Bar.
-
-6. Under "Containers," you should see your running containers. Right-click on the container running your Flask or FastAPI application.
-
-7. Select "Attach Visual Studio Code" from the context menu. This will configure the container for debugging.
-
-8. Open the Run view in Visual Studio Code and select the "Python: Remote Attach" configuration.
-
-9. Click the "Run" button to start the debugger.
-
-10. Access the frontend in your web browser and trigger the actions you want to debug.
-
-### Notes:
-
-- Ensure that your Docker containers are running (`docker-compose up --build`) before attaching Visual Studio Code.
-
-- Adjust the container name in the "Docker: Attach to Node" configuration if needed.
-
-- The provided configurations assume that your Flask or FastAPI application is running with the debugger attached. Adjust the configurations if needed.
-
-- If using Flask, ensure that the Flask application is started with the `--no-reload` option to prevent automatic reloading, which can interfere with debugging.
-
-- Debugging FastAPI requires configuring the FastAPI application to run with the `--reload` option. Update the FastAPI Dockerfile CMD accordingly.
-
-- After the debugger is attached, you can use breakpoints, inspect variables, and step through your code as needed.
-
-
-## Adding New Modules to a Running Docker Container
-
-1. **Install Additional Modules:**
-    ```bash
-    pip install new_module
-    ```
-   Replace `new_module` with the names of the module you want to install.
-
-2. **Verify Installed Modules:**
-    ```bash
-    pip list
-    ```
-   This command displays a list of installed Python packages, including the newly added modules.
-
-3. **Optional: Update requirements.txt:**
-    ```bash
-    pip freeze > requirements.txt
-    ```
-   If you want to keep track of the installed modules, you may choose to update the `requirements.txt` file inside the container.
-
-
-Now, the additional Python modules are installed in the running container, and you've performed these actions directly from the VS Code terminal. If these changes are intended for production, consider updating the `requirements.txt` file and rebuilding the Docker container.
+Lorenzo Campolo 890531
+Alessandro Gardenal 891882
+Marco Scuccato 891694
+Pietro Paloschi 890743
