@@ -27,7 +27,7 @@ def cheapest_to_fly(data, arrival):
     arrivals = data[(data['Arrival'] == arrival)]
 
     avg_price = arrivals.groupby("Air Carrier")["Price in £"].mean().round(2)
-    avg_price.reset_index(inplace=True)
+    avg_price = avg_price.reset_index()
     avg_price.sort_values(by="Price in £", inplace=True)
 
     cheapest = avg_price.iloc[0]
