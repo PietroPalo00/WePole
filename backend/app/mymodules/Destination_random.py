@@ -44,6 +44,3 @@ def randomize_destination(departure, df):
 
 
 
-
-
-
