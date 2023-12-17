@@ -3,10 +3,10 @@ import sys
 sys.path.append('app/mymodules')
 import pandas as pd
 
-from Cleaning import flights_data_cleaned
+from Cleaning import df_clean
 import datetime
 import random
-df = flights_data_cleaned
+df = df_clean
 
 #changing travel date string into datetime format
 

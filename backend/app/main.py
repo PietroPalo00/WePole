@@ -11,7 +11,7 @@ app = FastAPI()
 sys.path.append('app')
 
 # Load flight data and integrate cleaning functions
-from mymodules.Cleaning import flights_data_cleaned
+from mymodules.Cleaning import df_clean
 from mymodules.df_integrations import flights
 from mymodules.Feature_1_avg_price import calculate_average_price, filter_destinations
 from mymodules.Avg_Class_Price import calculate_average_price_airline
