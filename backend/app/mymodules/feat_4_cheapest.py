@@ -7,11 +7,6 @@ This module offers a tool to find the cheapest company
 to fly to a specified airport
 '''
 
-import pandas as pd
-import sys
-from df_integrations import flights
-sys.path.append('app/mymodules')
-
 
 def cheapest_to_fly(data, arrival):
     """
