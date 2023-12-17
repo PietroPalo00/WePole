@@ -3,7 +3,6 @@
    and it gives a list
    of possible destinations + dates'''
 
-from df_integrations import flights
 import random
 
 

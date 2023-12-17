@@ -13,10 +13,10 @@ sys.path.append('app')
 # Load flight data and integrate cleaning functions
 from mymodules.Cleaning import df_clean
 from mymodules.df_integrations import flights
-from mymodules.Feature_1_avg_price import calculate_average_price, filter_destinations
-from mymodules.Avg_Class_Price import calculate_average_price_airline
-from mymodules.Destination_random import randomize_destination
-from mymodules.Feature4_Cheapest_to_fly import cheapest_to_fly
+from mymodules.feat_1_avg_price import calculate_average_price
+from mymodules.feat_3_class_price import calculate_average_price_airline
+from mymodules.feat_2_random import randomize_destination
+from mymodules.feat_4_cheapest import cheapest_to_fly
 
 
 
@@ -55,7 +55,7 @@ def get_departure_from_csv():
     
 @app.get('/get_airline')
 def airlines():
-    tt = flights_data_cleaned['Air Carrier'].drop_duplicates().to_json(orient='records')
+    tt = df_clean['Air Carrier'].drop_duplicates().to_json(orient='records')
     return tt
 
 @app.get('/airlines-{AIRLINES}')
