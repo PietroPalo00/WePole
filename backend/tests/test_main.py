@@ -2,7 +2,6 @@ import os
 import sys
 from fastapi.testclient import TestClient
 import pandas as pd
-import json
 
 from app.main import app
 from app.mymodules.feat_2_random import randomize_destination

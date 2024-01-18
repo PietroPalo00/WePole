@@ -25,8 +25,12 @@ for it to be similar to a true flight search engine website.
 
 *Run the application* 
 
-Our dataset is called 'flights.csv' and is stored in the backend part. It must be present in order for 
-the software to work. 
+Our dataset is called 'flights.csv' and is stored in the backend part. It must be present in order for the software to work. 
+
+We got the dataset from the European Data Portal. This is the link:
+https://data.europa.eu/data/visualisation/?file=https%3A%2F%2Fwww.gov.uk%2Fgovernment%2Fuploads%2Fsystem%2Fuploads%2Fattachment_data%2Ffile%2F236265%2Fdft-flights-data-2011.csv
+The dataset inludes flights from 2011, mostly with departures form England aiports. The main columns are about the price, the departure and arrival destination, travel date, travel class and ari carrier. 
+
 
 Once master branch is opened, run and debug first backend and then frontend in Docker containers. 
 
